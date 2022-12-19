@@ -9,24 +9,40 @@ const App = () => {
 
   return (
     <div>
-      <Header course={course}/>
-      <p>
-        {part1} {exercises1}
-      </p>
-      <p>
-        {part2} {exercises2}
-      </p>
-      <p>
-        {part3} {exercises3}
-      </p>
-      <p>Number of exercises {exercises1 + exercises2 + exercises3}</p>
+      <Header course={course} />
+      <Content part1={part1} part2={part2} part3={part3} exercises1={exercises1} exercises2={exercises2} exercises3={exercises3}/>
+      <Total one={exercises1} two={exercises2} three={exercises3}/>
     </div>
   )
 }
 
-const Header = (course) => {
+const Header = (param) => {
   return (
-    <hi>{course}</hi>
+    <h1>{param.course}</h1>
+  )
+}
+
+const Part = (param) => {
+  return (
+    <p>
+        {param.part} {param.exercises}
+    </p>
+  )
+}
+
+const Content = (param) => {
+  return (
+    <div>
+      <Part part={param.part1} exercises={param.exercises1}/>
+      <Part part={param.part2} exercises={param.exercises2}/>
+      <Part part={param.part3} exercises={param.exercises3}/>
+    </div>
+  )
+}
+
+const Total = (param) => {
+  return (
+    <p>Number of exercises {param.one + param.two + param.three}</p>
   )
 }
 
